@@ -10,7 +10,7 @@ export const AboutSection = () => {
           </div>
           <div className="hide">
             <h2>
-              your <span>dream</span> come{" "}
+              your <span>dream</span> come
             </h2>
           </div>
           <div className="hide">
