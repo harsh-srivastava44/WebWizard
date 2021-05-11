@@ -1,16 +1,19 @@
+import { useAnimation } from "framer-motion";
 import React from "react";
+
 import styled from "styled-components";
+import { scrollView,fade } from "../animation";
 import clock from "../img/clock.svg";
 import diaphragm from "../img/diaphragm.svg";
 import home2 from "../img/home2.png";
 import money from "../img/money.svg";
 import teamwork from "../img/teamwork.svg";
 import { About, Description, Image } from "../styles";
-
-
+import { useScroll } from "./UseScroll";
 export const ServicesSection = () => {
+  const [element,controls] = useScroll();
   return (
-    <Services>
+    <Services variants={scrollView} animate={controls} initial="hidden" ref={element}>
       <Description className="description">
         <h2>
           High <span>quality </span>Services
@@ -59,24 +62,27 @@ const Services = styled(About)`
   p {
     width: 70%;
     padding: 2rem 0rem 4rem 0rem;
-  }
+  } 
 `;
 
 const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: 1300px) {
+        justify-content: center;
+    }
 `;
 const Card = styled.div`
- flex-basis : 20rem;
- .icon {
-     display : flex;
-     align-items : center;
-     h3 {
-         margin-left : 1rem;
-         background : white;
-         color: black;
-         padding : 1rem;
-         border-radius : 5px;
-     }
- }
+  flex-basis: 20rem;
+  .icon {
+    display: flex;
+    align-items: center;
+    h3 {
+      margin-left: 1rem;
+      background: white;
+      color: black;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+  }
 `;

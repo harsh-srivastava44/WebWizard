@@ -14,8 +14,11 @@ import {
   sliderContainer,
 } from "../animation";
 import { motion } from "framer-motion";
-
+import { useScroll } from "../components/UseScroll";
+import ScrollTop from "../components/ScrollTop";
 export const OurWork = () => {
+  const [element, controls] = useScroll();
+  const [element2, controls2] = useScroll();
   return (
     <Work
       style={{ background: "#fff" }}
@@ -44,18 +47,18 @@ export const OurWork = () => {
           </Hide>
         </Link>
       </Movie>
-      <Movie>
+      <Movie ref={element} variants={fade} animate={controls} initial="hidden">
         <h2>The Racer</h2>
-        <div className="line" variants={lineAnimation}></div>
+        <motion.div   className="line" variants={lineAnimation}></motion.div>
         <Link to="/work/the-racer">
           <Hide>
             <img src={theracer} variants={photoAnimation} alt="theracer" />
           </Hide>
         </Link>
       </Movie>
-      <Movie>
+      <Movie ref={element2} variants={fade} animate={controls2} initial="hidden">
         <h2>The GoodTimes</h2>
-        <div className="line" variants={lineAnimation}></div>
+        <motion.div className="line" variants={lineAnimation}></motion.div>
         <Link to="/work/good-times">
           <Hide>
             <img src={goodtimes} variants={photoAnimation} alt="goodtimes" />
@@ -72,9 +75,12 @@ const Work = styled(motion.div)`
   h2 {
     padding: 1rem 0rem;
   }
+  @media (max-width: 1300px) {
+        padding : 2rem 2rem;
+    }
 `;
 
-const Movie = styled.div`
+const Movie = styled(motion.div)`
   padding-bottom: 10rem;
   .line {
     height: 0.5rem;
