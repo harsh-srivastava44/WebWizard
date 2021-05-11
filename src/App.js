@@ -21,6 +21,9 @@ function App() {
           <Route exact path="/">
             <AboutUs />
           </Route>
+          <Route exact path="/WebWizard" >
+            <AboutUs />
+          </Route>
           <Route path="/work" exact>
             <OurWork />
           </Route>
